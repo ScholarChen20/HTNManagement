@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#EEFCFF",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "患者论坛发帖详情",
+  "usingComponents": {
+    "user-reply": "/components/forum-reply/forum-reply"
+  }
+}

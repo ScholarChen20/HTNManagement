@@ -1,0 +1,106 @@
+ 《list》
+ <el-table-column :resizable='true' :sortable='true' prop="xingbie" label="性别">
+ 						<template slot-scope="scope">
+ 							{{scope.row.xingbie}}
+ 						</template>
+ 					</el-table-column>
+ 					<el-table-column :resizable='true' :sortable='true' prop="nianling" label="年龄">
+ 						<template slot-scope="scope">
+ 							{{scope.row.nianling}}
+ 						</template>
+ 					</el-table-column>
+ 					<el-table-column :resizable='true' :sortable='true' prop="shousuoya" label="收缩压">
+ 						<template slot-scope="scope">
+ 							{{scope.row.shousuoya}}
+ 						</template>
+ 					</el-table-column>
+
+ <el-table-column :resizable='true' :sortable='true'
+ 						prop="xueqingdanguchun"
+ 						label="血清胆固醇">
+ 						<template slot-scope="scope">
+ 							{{scope.row.xueqingdanguchun}}
+ 						</template>
+ 					</el-table-column>
+ 					<el-table-column :resizable='true' :sortable='true'
+ 						prop="shifouxiyan"
+ 						label="是否吸烟">
+ 						<template slot-scope="scope">
+ 							{{scope.row.shifouxiyan}}
+ 						</template>
+ 					</el-table-column>
+ 					<el-table-column :resizable='true' :sortable='true'
+ 						prop="shifouhejiu"
+ 						label="是否喝酒">
+ 						<template slot-scope="scope">
+ 							{{scope.row.shifouhejiu}}
+ 						</template>
+ 					</el-table-column>
+
+	<el-button class="btn8" v-if="isAuth('fengxianpinggu','风险结果')" @click="fengxianjieguoCrossAddOrUpdateHandler(scope.row,'cross','','','[1]','已经评估了')" type="success">
+								<span class="icon iconfont icon-xihuan" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
+								风险结果
+							</el-button>
+
+《add-update》
+	<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="select" v-if="type!='info'"  label="性别" prop="xingbie">
+              <el-select :disabled="ro.xingbie" v-model="ruleForm.xingbie" placeholder="请选择性别" >
+                <el-option
+							v-for="(item,index) in xingbieOptions"
+							v-bind:key="index"
+							:label="item"
+							:value="item">
+						</el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="性别" prop="xingbie">
+					<el-input v-model="ruleForm.xingbie"
+						placeholder="性别" readonly></el-input>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="input" v-if="type!='info'"  label="年龄" prop="nianling">
+					<el-input v-model.number="ruleForm.nianling" placeholder="年龄" clearable  :readonly="ro.nianling"></el-input>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="年龄" prop="nianling">
+					<el-input v-model="ruleForm.nianling" placeholder="年龄" readonly></el-input>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="input" v-if="type!='info'"  label="收缩压" prop="shousuoya">
+					<el-input-number v-model="ruleForm.shousuoya" placeholder="收缩压" :readonly="ro.shousuoya"></el-input-number>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="收缩压" prop="shousuoya">
+					<el-input v-model="ruleForm.shousuoya" placeholder="收缩压" readonly></el-input>
+				</el-form-item>
+
+<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="input" v-if="type!='info'"  label="血清胆固醇" prop="xueqingdanguchun">
+					<el-input-number v-model="ruleForm.xueqingdanguchun" placeholder="血清胆固醇" :readonly="ro.xueqingdanguchun"></el-input-number>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="血清胆固醇" prop="xueqingdanguchun">
+					<el-input v-model="ruleForm.xueqingdanguchun" placeholder="血清胆固醇" readonly></el-input>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="select" v-if="type!='info'"  label="是否吸烟" prop="shifouxiyan">
+					<el-select :disabled="ro.shifouxiyan" v-model="ruleForm.shifouxiyan" placeholder="请选择是否吸烟" >
+						<el-option
+							v-for="(item,index) in shifouxiyanOptions"
+							v-bind:key="index"
+							:label="item"
+							:value="item">
+						</el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="是否吸烟" prop="shifouxiyan">
+					<el-input v-model="ruleForm.shifouxiyan"
+						placeholder="是否吸烟" readonly></el-input>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' class="select" v-if="type!='info'"  label="是否喝酒" prop="shifouhejiu">
+					<el-select :disabled="ro.shifouhejiu" v-model="ruleForm.shifouhejiu" placeholder="请选择是否喝酒" >
+						<el-option
+							v-for="(item,index) in shifouhejiuOptions"
+							v-bind:key="index"
+							:label="item"
+							:value="item">
+						</el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item :style='{"width":"48%","margin":"0 0 30px 0","fontSize":"inherit","color":"inherit"}' v-else class="input" label="是否喝酒" prop="shifouhejiu">
+					<el-input v-model="ruleForm.shifouhejiu"
+						placeholder="是否喝酒" readonly></el-input>
+				</el-form-item>
