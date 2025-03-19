@@ -95,7 +95,7 @@
    
    ```
 
-7. 在 [resources](./src/main/java/utils) 目录下找到 `Wechat.java` 文件，修改以下配置
+7. 在 (./src/main/java/utils) 目录下找到 `Wechat.java` 文件，修改以下配置
 
    ```
    public static JSONObject getSessionKeyOrOpenId(String code) {
@@ -108,5 +108,10 @@
         requestUrlParam.put("secret", "80cc45346775bb1286bd3b5fa620d81c");
         
    ```
+8. 使用Hbuilder X打开[resources](./src/main/resources/front)目录文件，运行到小程序模拟器即可
+9. 配置node.js，在终端运行[resources](./src/main/resources/admin)目录下的1-install.bat和2-run.bat文件
+10. 运行项目
+11. 小程序页面展示
+![1](https://github.com/user-attachments/assets/d3bc6fca-75a4-49b3-a7ce-256e5841c68b)
+![2](https://github.com/user-attachments/assets/8b31e518-bfa9-449f-af86-3c1792e5ee8e)
 
-8. 运行项目
