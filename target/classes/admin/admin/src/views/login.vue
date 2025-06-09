@@ -157,7 +157,7 @@ export default {
 		background: #f3f3f3;
 		width: 100%;
 		font-size: inherit;
-		outline-offset: 0px;
+		outline-offset:0px;
 		height: 50px;
 	  }
   
